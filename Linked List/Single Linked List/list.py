@@ -20,7 +20,7 @@ class LinkedList:
         newNode.next = self.head
         self.head = newNode
     
-    def add(self, data):
+    def append(self, data):
         newNode = Node(data)
         
         # if list is empty
@@ -65,7 +65,7 @@ class LinkedList:
     def removeNode(self,key):
         temp = self.head
 
-    # check if the head contains the 
+        # check if the head contains the 
         if temp is not None:
             if temp.data == key:
                 self.head = temp.next
@@ -107,17 +107,48 @@ class LinkedList:
         
         temp.next = temp.next.next
         temp = None
-   
+    
+    def removeNodeByValue(self, value):
+        pass
+
+    def insertAfterIndex(self, index, data):
+        newNode = Node(data)
+        temp = self.head
+        for i in range(1,index):
+            temp = temp.next
+            if temp is None:
+                break
+        newNode.next = temp.next
+        temp.next = newNode
+
+    def insertAfterValue(self,value, data):
+        temp = self.head
+        newNode = Node(data)
+        while(temp):
+            if temp.data == value:
+                newNode.next = temp.next
+                temp.next = newNode
+                return
+            temp = temp.next
+
+    def insertAfterNode(self, node, data):
+        newNode = Node(data)
+        newNode.next = node.next
+        node.next = newNode
+        
+
 if __name__ == "__main__":
     singleList = LinkedList()
     singleList.push(3)
     singleList.push(2)
     singleList.push(1)
-    singleList.add(4)
-    singleList.add(5)
-    singleList.add(6)
+    singleList.append(4)
+    singleList.append(5)
+    singleList.append(6)
     singleList.pop()
     singleList.remove()
     singleList.removeNode(3)
     singleList.removeNodeByIndex(2)
+    singleList.insertAfterValue(2,10)
+    singleList.insertAfterIndex(2,11)
     singleList.printList()
