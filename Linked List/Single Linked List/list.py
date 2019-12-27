@@ -107,9 +107,6 @@ class LinkedList:
         
         temp.next = temp.next.next
         temp = None
-    
-    def removeNodeByValue(self, value):
-        pass
 
     def insertAfterIndex(self, index, data):
         newNode = Node(data)
